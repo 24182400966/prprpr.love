@@ -1,3 +1,6 @@
+var api = "https://www.blog.toomey.top";
+
+
 $('.menu a').click(function(){
     target = $(this).attr('goto');
     switchTo(target);
@@ -14,14 +17,14 @@ function switchTo(target){
     $(target).addClass('active');
 }
 
-function getAchives(){
+function getAchives() {
     t = ``;
     $.ajax({
-        type:"GET",
-        url:"https://moedog.org/wp-json/wp/v2/posts?per_page=8&page=1",
-        dataType:"json",
-        success:function(json){
-            for(var i = 0;i < json.length;i++){
+        type: "GET",
+        url: api + "wp-json/wp/v2/posts?per_page=10&page=1",
+        dataType: "json",
+        success: function (json) {
+            for (var i = 0; i < json.length; i++) {
                 title = json[i].title.rendered;
                 link = json[i].link;
                 time = new Date(json[i].date).Format("yyyy-MM-dd");
